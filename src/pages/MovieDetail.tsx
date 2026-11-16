@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getMovieBySlug } from '../lib/api';
-import { formatEpisodes, formatPriceLabel, statusLabel } from '../lib/format';
+import { formatEpisodes, formatPriceLabel, seasonLabel, statusLabel } from '../lib/format';
 import {
   buildAdminContactUrl,
   getWebApp,
@@ -175,9 +175,11 @@ export default function MovieDetail() {
                   </dd>
                 </div>
                 <div className="flex gap-2">
-                  <dt className="w-28 shrink-0 text-slate-400">Số mùa</dt>
+                  <dt className="w-28 shrink-0 text-slate-400">
+                    {movie.season_number ? 'Mùa' : 'Số mùa'}
+                  </dt>
                   <dd className="font-medium text-white">
-                    {movie.seasons} mùa
+                    {seasonLabel(movie)}
                   </dd>
                 </div>
                 {movie.leads && (
