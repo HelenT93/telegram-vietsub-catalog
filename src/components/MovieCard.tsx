@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { formatEpisodes, formatPrice, statusLabel } from '../lib/format';
+import { formatEpisodes, formatPrice, formatSeasons, statusLabel } from '../lib/format';
 import { hapticLight } from '../lib/telegram';
 import type { Movie } from '../lib/types';
 
@@ -51,6 +51,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           {movie.genre.join(' · ')}
         </p>
         <p className="mt-1 text-xs font-medium text-slate-300">
+          {formatSeasons(movie.seasons)} ·{' '}
           {formatEpisodes(movie.episode_released, movie.episode_total)}
         </p>
       </div>
