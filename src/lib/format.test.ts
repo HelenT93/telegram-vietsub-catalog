@@ -3,6 +3,7 @@ import {
   formatDate,
   formatEpisodes,
   formatPrice,
+  formatSeasons,
   normalizeSearchText,
   statusLabel,
 } from './format';
@@ -28,10 +29,18 @@ describe('formatEpisodes', () => {
   });
 });
 
+describe('formatSeasons', () => {
+  it('1 mùa hiển thị "Mùa 1", nhiều mùa hiển thị "N mùa"', () => {
+    expect(formatSeasons(1)).toBe('Mùa 1');
+    expect(formatSeasons(2)).toBe('2 mùa');
+    expect(formatSeasons(4)).toBe('4 mùa');
+  });
+});
+
 describe('statusLabel', () => {
   it('dịch trạng thái sang nhãn tiếng Việt', () => {
     expect(statusLabel('completed')).toBe('Hoàn thành');
-    expect(statusLabel('ongoing')).toBe('Đang chiếu');
+    expect(statusLabel('ongoing')).toBe('Đang cập nhập');
     expect(statusLabel('subtitling')).toBe('Đang Vietsub');
   });
 });
