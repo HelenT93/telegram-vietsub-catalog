@@ -40,6 +40,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       </div>
       <div className="p-2.5">
         <h3 className="line-clamp-1 text-sm font-semibold text-white">
+          {movie.is_adult && (
+            <span className="mr-1 rounded bg-rose-600 px-1 py-px align-middle text-[10px] font-bold text-white">
+              18+
+            </span>
+          )}
           {movie.title_vi}
         </h3>
         <p className="mt-0.5 line-clamp-1 text-xs text-slate-400">
