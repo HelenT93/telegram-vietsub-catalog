@@ -23,6 +23,7 @@ const SAMPLE: Movie[] = [
     genre: ['Tình cảm', 'Thanh xuân'],
     episode_total: 24,
     episode_released: 24,
+    seasons: 1,
     status: 'completed',
     access_type: 'free',
     display_price_vnd: null,
@@ -41,9 +42,13 @@ const SAMPLE: Movie[] = [
     genre: ['Đời thường', 'Lãng mạn'],
     episode_total: 16,
     episode_released: 12,
+    seasons: 2,
+    leads: 'Minh Anh × Quốc Bảo',
     status: 'ongoing',
     access_type: 'paid',
     display_price_vnd: 49000,
+    price_note: '/mùa',
+    is_adult: true,
     is_featured: false,
     public_url: null,
     published_at: '2026-11-02',
@@ -59,6 +64,7 @@ const SAMPLE: Movie[] = [
     genre: ['Khoa học viễn tưởng', 'Phiêu lưu'],
     episode_total: 12,
     episode_released: 8,
+    seasons: 1,
     status: 'subtitling',
     access_type: 'paid',
     display_price_vnd: 69000,
@@ -216,6 +222,44 @@ describe('loadMovies', () => {
     );
     const movies = await loadMovies();
     expect(movies[0].poster_url).toBe(resolvePosterUrl('/posters/a.webp'));
+  });
+
+  it('giữ nguyên price_note của phim trả phí', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ movies: SAMPLE }),
+      }),
+    );
+    const movies = await loadMovies();
+    expect(movies[1].price_note).toBe('/mùa');
+  });
+
+  it('giữ nguyên số mùa và nhân vật chính', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ movies: SAMPLE }),
+      }),
+    );
+    const movies = await loadMovies();
+    expect(movies[1].seasons).toBe(2);
+    expect(movies[1].leads).toBe('Minh Anh × Quốc Bảo');
+  });
+
+  it('giữ nguyên cờ 18+ của phim có cảnh nóng', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ movies: SAMPLE }),
+      }),
+    );
+    const movies = await loadMovies();
+    expect(movies[1].is_adult).toBe(true);
+    expect(movies[0].is_adult).toBeUndefined();
   });
 
   it('ném lỗi khi HTTP không thành công', async () => {

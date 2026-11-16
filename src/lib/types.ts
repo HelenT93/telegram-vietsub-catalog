@@ -11,10 +11,19 @@ export interface Movie {
   genre: string[];
   episode_total: number;
   episode_released: number;
+  /** Số mùa đã ra (kể cả mùa đang ra). Lấy từ hồ sơ tìm phim cùng chị. */
+  seasons: number;
+  /** Cặp nhân vật chính, vd "Tiêu Lệ × Ôn Tục Xuân". Bỏ trống nếu chưa xác minh. */
+  leads?: string | null;
   status: MovieStatus;
   access_type: AccessType;
   /** Giá tham khảo (VND). Chỉ có ý nghĩa khi access_type = 'paid'. */
   display_price_vnd: number | null;
+  /** Phim có cảnh nóng — hiển thị ký hiệu [18+] trước tên phim.
+   * Nguồn: dấu ⚡ trên poster tổng hợp đã duyệt (có cảnh uncut). */
+  is_adult?: boolean;
+  /** Hậu tố giá, vd "/mùa" khi giá tính theo mùa. Chỉ dùng khi access_type = 'paid'. */
+  price_note?: string | null;
   is_featured: boolean;
   /** URL channel công khai — chỉ dùng cho phim miễn phí. Phim trả phí KHÔNG có URL ở đây. */
   public_url: string | null;
