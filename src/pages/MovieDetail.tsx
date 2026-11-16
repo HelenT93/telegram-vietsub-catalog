@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getMovieBySlug } from '../lib/api';
 import { formatEpisodes, formatPrice, statusLabel } from '../lib/format';
 import {
+  buildAdminContactUrl,
   getWebApp,
   hapticLight,
   openExternalLink,
@@ -60,8 +61,10 @@ export default function MovieDetail() {
 
   const handleContactAdmin = () => {
     hapticLight();
-    if (adminUsername) {
-      openTelegramLink(`https://t.me/${adminUsername}`);
+    if (adminUsername && movie) {
+      // Mở chat với admin, kèm sẵn tên phim + mã phim + giá trong ô nhập
+      // tin nhắn để người xem chỉ cần bấm gửi.
+      openTelegramLink(buildAdminContactUrl(adminUsername, movie));
     } else if (botUsername && movie) {
       openTelegramLink(
         `https://t.me/${botUsername}?start=movie_${movie.id}`,
@@ -233,8 +236,8 @@ export default function MovieDetail() {
             )}
             {movie.access_type === 'paid' && (
               <p className="mt-2 text-center text-xs text-slate-400">
-                Mã phim: {movie.id} — gửi mã này cho admin để được tư vấn nhanh
-                hơn.
+                Tin nhắn đã ghi sẵn tên phim, mã phim và giá — bấm nút trên
+                rồi bấm gửi.
               </p>
             )}
           </div>
