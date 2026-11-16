@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getMovieBySlug } from '../lib/api';
-import { formatEpisodes, formatPrice, statusLabel } from '../lib/format';
+import { formatEpisodes, formatPriceLabel, formatSeasonTotal, statusLabel } from '../lib/format';
 import {
   buildAdminContactUrl,
   getWebApp,
@@ -191,11 +191,19 @@ export default function MovieDetail() {
                 <div className="flex gap-2">
                   <dt className="w-28 shrink-0 text-slate-400">Giá tham khảo</dt>
                   <dd className="font-medium text-white">
-                    {movie.access_type === 'free'
-                      ? 'Miễn phí'
-                      : `${formatPrice(movie.display_price_vnd)}${movie.price_note ?? ''}`}
+                    {formatPriceLabel(movie)}
                   </dd>
                 </div>
+                {formatSeasonTotal(movie) && (
+                  <div className="flex gap-2">
+                    <dt className="w-28 shrink-0 text-slate-400">
+                      Trọn bộ ({movie.seasons} mùa)
+                    </dt>
+                    <dd className="font-medium text-white">
+                      {formatSeasonTotal(movie)}
+                    </dd>
+                  </div>
+                )}
               </dl>
             </div>
           </div>
