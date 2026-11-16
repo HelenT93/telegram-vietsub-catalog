@@ -1,9 +1,50 @@
-import type { MovieStatus } from './types';
+import type { Movie, MovieStatus } from './types';
 
 /** 49000 -> "49.000 ₫"; 0 / null -> "Miễn phí". */
 export function formatPrice(vnd: number | null | undefined): string {
   if (!vnd || vnd <= 0) return 'Miễn phí';
   return `${vnd.toLocaleString('vi-VN')} ₫`;
+}
+
+export type PriceFields = Pick<
+  Movie,
+  'access_type' | 'display_price_vnd' | 'price_note' | 'seasons'
+>;
+
+/**
+ * Nhãn giá ĐẦY ĐỦ ĐƠN VỊ, dùng ở mọi nơi hiển thị giá (thẻ phim, trang
+ * chi tiết, tin nhắn ghi sẵn cho admin): phim miễn phí -> "Miễn phí";
+ * phim tính theo mùa -> "20.000 ₫/mùa"; phim tính theo bộ -> "20.000 ₫/bộ".
+ * Không bao giờ để giá trần "20.000 ₫" không đơn vị — người xem dễ hiểu
+ * lầm 20k là giá cả bộ phim.
+ */
+export function formatPriceLabel(movie: PriceFields): string {
+  if (movie.access_type === 'free') return 'Miễn phí';
+  if (!movie.display_price_vnd || movie.display_price_vnd <= 0)
+    return 'Miễn phí';
+  const note =
+    movie.price_note && movie.price_note.trim() !== ''
+      ? movie.price_note
+      : '/bộ';
+  return `${formatPrice(movie.display_price_vnd)}${note}`;
+}
+
+/**
+ * Tổng tiền trọn bộ cho phim tính theo mùa có nhiều mùa, vd phim 20.000 ₫/mùa
+ * x 3 mùa -> "60.000 ₫". Trả null khi không phải phim tính theo mùa nhiều mùa.
+ */
+export function formatSeasonTotal(movie: PriceFields): string | null {
+  if (
+    movie.access_type !== 'paid' ||
+    movie.price_note !== '/mùa' ||
+    !movie.display_price_vnd ||
+    movie.display_price_vnd <= 0 ||
+    !movie.seasons ||
+    movie.seasons <= 1
+  ) {
+    return null;
+  }
+  return formatPrice(movie.display_price_vnd * movie.seasons);
 }
 
 /** "12/16 tập". */

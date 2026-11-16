@@ -4,7 +4,7 @@
  * của window.Telegram.WebApp trước khi gọi, và có fallback trình duyệt thường.
  */
 
-import { formatPrice } from './format';
+import { formatPriceLabel } from './format';
 import type { Movie } from './types';
 
 export interface TelegramWebApp {
@@ -81,13 +81,15 @@ export function buildAdminContactUrl(
   username: string,
   movie: Pick<
     Movie,
-    'id' | 'title_vi' | 'display_price_vnd' | 'price_note' | 'access_type'
+    | 'id'
+    | 'title_vi'
+    | 'display_price_vnd'
+    | 'price_note'
+    | 'access_type'
+    | 'seasons'
   >,
 ): string {
-  const price =
-    movie.access_type === 'free'
-      ? 'Miễn phí'
-      : `${formatPrice(movie.display_price_vnd)}${movie.price_note ?? ''}`;
+  const price = formatPriceLabel(movie);
   const text = `Chào admin, mình muốn xem phim "${movie.title_vi}" (Mã phim: ${movie.id}) — Giá tham khảo: ${price}.`;
   return `https://t.me/${username}?text=${encodeURIComponent(text)}`;
 }

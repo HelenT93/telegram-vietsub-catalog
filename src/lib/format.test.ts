@@ -3,10 +3,103 @@ import {
   formatDate,
   formatEpisodes,
   formatPrice,
+  formatPriceLabel,
+  formatSeasonTotal,
   formatSeasons,
   normalizeSearchText,
   statusLabel,
 } from './format';
+
+describe('formatPriceLabel', () => {
+  it('phim miễn phí -> "Miễn phí"', () => {
+    expect(
+      formatPriceLabel({
+        access_type: 'free',
+        display_price_vnd: null,
+        price_note: null,
+        seasons: 1,
+      }),
+    ).toBe('Miễn phí');
+  });
+
+  it('phim tính theo mùa giữ hậu tố "/mùa"', () => {
+    expect(
+      formatPriceLabel({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: '/mùa',
+        seasons: 2,
+      }),
+    ).toBe('20.000 ₫/mùa');
+  });
+
+  it('phim tính theo bộ hiện rõ "/bộ", không để giá trần', () => {
+    expect(
+      formatPriceLabel({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: null,
+        seasons: 1,
+      }),
+    ).toBe('20.000 ₫/bộ');
+    expect(
+      formatPriceLabel({
+        access_type: 'paid',
+        display_price_vnd: 50000,
+        price_note: null,
+        seasons: 1,
+      }),
+    ).toBe('50.000 ₫/bộ');
+  });
+});
+
+describe('formatSeasonTotal', () => {
+  it('phim 20k/mùa x 2 mùa -> "40.000 ₫", x 3 mùa -> "60.000 ₫"', () => {
+    expect(
+      formatSeasonTotal({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: '/mùa',
+        seasons: 2,
+      }),
+    ).toBe('40.000 ₫');
+    expect(
+      formatSeasonTotal({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: '/mùa',
+        seasons: 3,
+      }),
+    ).toBe('60.000 ₫');
+  });
+
+  it('trả null khi không phải phim tính theo mùa nhiều mùa', () => {
+    expect(
+      formatSeasonTotal({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: null,
+        seasons: 2,
+      }),
+    ).toBeNull();
+    expect(
+      formatSeasonTotal({
+        access_type: 'paid',
+        display_price_vnd: 20000,
+        price_note: '/mùa',
+        seasons: 1,
+      }),
+    ).toBeNull();
+    expect(
+      formatSeasonTotal({
+        access_type: 'free',
+        display_price_vnd: null,
+        price_note: null,
+        seasons: 2,
+      }),
+    ).toBeNull();
+  });
+});
 
 describe('formatPrice', () => {
   it('định dạng số tiền VND theo chuẩn vi-VN', () => {

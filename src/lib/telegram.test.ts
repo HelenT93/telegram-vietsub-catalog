@@ -7,6 +7,7 @@ const paidMovie = {
   display_price_vnd: 20000,
   price_note: null,
   access_type: 'paid' as const,
+  seasons: 1,
 };
 
 describe('buildAdminContactUrl', () => {
@@ -14,7 +15,7 @@ describe('buildAdminContactUrl', () => {
     const url = new URL(buildAdminContactUrl('nhatlosinhhoa', paidMovie));
     expect(url.origin + url.pathname).toBe('https://t.me/nhatlosinhhoa');
     expect(url.searchParams.get('text')).toBe(
-      'Chào admin, mình muốn xem phim "Vọng Nhạ Xuân Thâm" (Mã phim: vong-nha-xuan-tham) — Giá tham khảo: 20.000 ₫.',
+      'Chào admin, mình muốn xem phim "Vọng Nhạ Xuân Thâm" (Mã phim: vong-nha-xuan-tham) — Giá tham khảo: 20.000 ₫/bộ.',
     );
   });
 
