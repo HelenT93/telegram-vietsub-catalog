@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { formatEpisodes, formatPrice, formatSeasons, statusLabel } from '../lib/format';
+import { formatEpisodes, formatPriceLabel, formatSeasons, statusLabel } from '../lib/format';
 import { hapticLight } from '../lib/telegram';
 import type { Movie } from '../lib/types';
 
@@ -35,7 +35,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
             free ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'
           }`}
         >
-          {free ? 'MIỄN PHÍ' : formatPrice(movie.display_price_vnd)}
+          {free ? 'MIỄN PHÍ' : formatPriceLabel(movie)}
         </span>
       </div>
       <div className="p-2.5">
