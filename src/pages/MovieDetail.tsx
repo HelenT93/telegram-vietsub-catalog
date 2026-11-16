@@ -23,6 +23,13 @@ export default function MovieDetail() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const movie = slug ? getMovieBySlug(movies, slug) : undefined;
+  // Liên hệ admin trực tiếp (tài khoản của chị). Giữ bot deep link làm
+  // fallback khi chưa cấu hình admin (bot cần backend mới trả lời /start).
+  const adminUsername = (
+    import.meta.env.VITE_ADMIN_USERNAME as string | undefined
+  )
+    ?.replace(/^@/, '')
+    .trim();
   const botUsername = (import.meta.env.VITE_BOT_USERNAME as string | undefined)
     ?.replace(/^@/, '')
     .trim();
@@ -46,30 +53,28 @@ export default function MovieDetail() {
       openExternalLink(movie.public_url);
     } else {
       setNotice(
-        'Bản demo chưa gắn channel công khai cho phim này. Khi vận hành thật, nút này sẽ mở channel Telegram chứa phim.',
+        'Phim này chưa gắn link xem. Vui lòng liên hệ admin để được hướng dẫn.',
       );
     }
   };
 
   const handleContactAdmin = () => {
     hapticLight();
-    if (botUsername && movie) {
+    if (adminUsername) {
+      openTelegramLink(`https://t.me/${adminUsername}`);
+    } else if (botUsername && movie) {
       openTelegramLink(
         `https://t.me/${botUsername}?start=movie_${movie.id}`,
       );
     } else {
       setNotice(
-        'Bản demo chưa cấu hình bot Telegram (VITE_BOT_USERNAME). Khi vận hành thật, nút này mở chat với admin kèm mã phim để được tư vấn.',
+        'Chưa cấu hình tài khoản admin. Vui lòng thử lại sau.',
       );
     }
   };
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-3xl pb-10">
-      <div className="bg-amber-500/15 px-4 py-2 text-center text-xs font-medium text-amber-300">
-        Bản demo — dữ liệu mẫu, chưa phải phim thật
-      </div>
-
       <div className="px-4 pt-4 sm:px-6">
         <Link
           to="/"
@@ -132,6 +137,11 @@ export default function MovieDetail() {
             />
             <div className="min-w-0">
               <h1 className="text-2xl font-bold leading-tight text-white">
+                {movie.is_adult && (
+                  <span className="mr-2 rounded-md bg-rose-600 px-1.5 py-0.5 align-middle text-sm font-bold text-white">
+                    18+
+                  </span>
+                )}
                 {movie.title_vi}
               </h1>
               {movie.title_original && (
@@ -162,11 +172,25 @@ export default function MovieDetail() {
                   </dd>
                 </div>
                 <div className="flex gap-2">
+                  <dt className="w-28 shrink-0 text-slate-400">Số mùa</dt>
+                  <dd className="font-medium text-white">
+                    {movie.seasons} mùa
+                  </dd>
+                </div>
+                {movie.leads && (
+                  <div className="flex gap-2">
+                    <dt className="w-28 shrink-0 text-slate-400">
+                      Nhân vật chính
+                    </dt>
+                    <dd className="font-medium text-white">{movie.leads}</dd>
+                  </div>
+                )}
+                <div className="flex gap-2">
                   <dt className="w-28 shrink-0 text-slate-400">Giá tham khảo</dt>
                   <dd className="font-medium text-white">
                     {movie.access_type === 'free'
                       ? 'Miễn phí'
-                      : formatPrice(movie.display_price_vnd)}
+                      : `${formatPrice(movie.display_price_vnd)}${movie.price_note ?? ''}`}
                   </dd>
                 </div>
               </dl>

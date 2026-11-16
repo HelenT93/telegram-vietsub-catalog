@@ -39,11 +39,6 @@ export default function Home() {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-3xl pb-10">
-      {/* Banner demo — luôn hiển thị rõ đây là dữ liệu mẫu. */}
-      <div className="bg-amber-500/15 px-4 py-2 text-center text-xs font-medium text-amber-300">
-        Bản demo — dữ liệu mẫu, chưa phải phim thật
-      </div>
-
       {!isTelegram() && (
         <div className="bg-sky-500/15 px-4 py-2 text-center text-xs text-sky-300">
           Mở trong Telegram để có trải nghiệm đầy đủ
@@ -223,7 +218,7 @@ export default function Home() {
 
       <footer className="mt-10 px-4 text-center text-xs text-slate-500 sm:px-6">
         <p>
-          Kho Phim Vietsub (demo) · Cập nhật gần nhất:{' '}
+          Kho Phim Vietsub · Cập nhật gần nhất:{' '}
           {movies.length > 0
             ? formatDate(
                 sortMovies(movies, 'updated')[0].updated_at,
