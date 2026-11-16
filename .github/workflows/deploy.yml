@@ -27,7 +27,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # Bot + admin là thông tin công khai (link bot và handle Telegram của chị)
+      # nên để thẳng ở đây; không có secret nào trong workflow này.
       - run: npm run build
+        env:
+          VITE_BOT_USERNAME: nienkhaitocam_khophimvietsub_bot
+          VITE_ADMIN_USERNAME: nhatlosinhhoa
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
