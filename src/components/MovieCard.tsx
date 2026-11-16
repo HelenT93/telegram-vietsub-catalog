@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { formatEpisodes, formatPriceLabel, seasonLabel, statusLabel } from '../lib/format';
+import { episodeCountLabel, formatPriceLabel, seasonLabel, statusLabel } from '../lib/format';
 import { hapticLight } from '../lib/telegram';
 import type { Movie } from '../lib/types';
 
@@ -16,7 +16,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       to={`/movie/${movie.slug}`}
       onClick={hapticLight}
       className="group block w-36 shrink-0 overflow-hidden rounded-xl bg-slate-800/60 ring-1 ring-white/10 transition hover:ring-white/30 sm:w-44"
-      aria-label={`${movie.title_vi} — ${formatEpisodes(movie.episode_released, movie.episode_total)}`}
+      aria-label={`${movie.title_vi} — ${episodeCountLabel(movie)}`}
     >
       <div className="relative aspect-[2/3] overflow-hidden bg-slate-900">
         <img
@@ -52,7 +52,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         </p>
         <p className="mt-1 text-xs font-medium text-slate-300">
           {seasonLabel(movie)} ·{' '}
-          {formatEpisodes(movie.episode_released, movie.episode_total)}
+          {episodeCountLabel(movie)}
         </p>
       </div>
     </Link>
