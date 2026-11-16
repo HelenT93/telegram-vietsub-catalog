@@ -4,7 +4,6 @@ import {
   formatEpisodes,
   formatPrice,
   formatPriceLabel,
-  formatSeasonTotal,
   formatSeasons,
   normalizeSearchText,
   statusLabel,
@@ -53,53 +52,6 @@ describe('formatPriceLabel', () => {
   });
 });
 
-describe('formatSeasonTotal', () => {
-  it('phim 20k/mùa x 2 mùa -> "40.000 ₫", x 3 mùa -> "60.000 ₫"', () => {
-    expect(
-      formatSeasonTotal({
-        access_type: 'paid',
-        display_price_vnd: 20000,
-        price_note: '/mùa',
-        seasons: 2,
-      }),
-    ).toBe('40.000 ₫');
-    expect(
-      formatSeasonTotal({
-        access_type: 'paid',
-        display_price_vnd: 20000,
-        price_note: '/mùa',
-        seasons: 3,
-      }),
-    ).toBe('60.000 ₫');
-  });
-
-  it('trả null khi không phải phim tính theo mùa nhiều mùa', () => {
-    expect(
-      formatSeasonTotal({
-        access_type: 'paid',
-        display_price_vnd: 20000,
-        price_note: null,
-        seasons: 2,
-      }),
-    ).toBeNull();
-    expect(
-      formatSeasonTotal({
-        access_type: 'paid',
-        display_price_vnd: 20000,
-        price_note: '/mùa',
-        seasons: 1,
-      }),
-    ).toBeNull();
-    expect(
-      formatSeasonTotal({
-        access_type: 'free',
-        display_price_vnd: null,
-        price_note: null,
-        seasons: 2,
-      }),
-    ).toBeNull();
-  });
-});
 
 describe('formatPrice', () => {
   it('định dạng số tiền VND theo chuẩn vi-VN', () => {

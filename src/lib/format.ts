@@ -29,24 +29,6 @@ export function formatPriceLabel(movie: PriceFields): string {
   return `${formatPrice(movie.display_price_vnd)}${note}`;
 }
 
-/**
- * Tổng tiền trọn bộ cho phim tính theo mùa có nhiều mùa, vd phim 20.000 ₫/mùa
- * x 3 mùa -> "60.000 ₫". Trả null khi không phải phim tính theo mùa nhiều mùa.
- */
-export function formatSeasonTotal(movie: PriceFields): string | null {
-  if (
-    movie.access_type !== 'paid' ||
-    movie.price_note !== '/mùa' ||
-    !movie.display_price_vnd ||
-    movie.display_price_vnd <= 0 ||
-    !movie.seasons ||
-    movie.seasons <= 1
-  ) {
-    return null;
-  }
-  return formatPrice(movie.display_price_vnd * movie.seasons);
-}
-
 /** "12/16 tập". */
 export function formatEpisodes(released: number, total: number): string {
   return `${released}/${total} tập`;
