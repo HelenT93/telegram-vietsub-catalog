@@ -6,6 +6,7 @@ import {
   getMovieBySlug,
   getSubtitlingMovies,
   loadMovies,
+  resolvePosterUrl,
   searchMovies,
   sortMovies,
 } from './api';
@@ -173,6 +174,24 @@ describe('section helpers', () => {
   });
 });
 
+describe('resolvePosterUrl', () => {
+  it('gắn BASE_URL cho đường dẫn tuyệt đối từ gốc', () => {
+    expect(resolvePosterUrl('/posters/a.webp', '/telegram-vietsub-catalog/')).toBe(
+      '/telegram-vietsub-catalog/posters/a.webp',
+    );
+  });
+
+  it('giữ nguyên khi base là / (chạy ở gốc domain)', () => {
+    expect(resolvePosterUrl('/posters/a.webp', '/')).toBe('/posters/a.webp');
+  });
+
+  it('giữ nguyên URL http(s) tuyệt đối', () => {
+    expect(
+      resolvePosterUrl('https://cdn.example.com/a.webp', '/telegram-vietsub-catalog/'),
+    ).toBe('https://cdn.example.com/a.webp');
+  });
+});
+
 describe('loadMovies', () => {
   it('tải và validate danh sách phim từ JSON', async () => {
     vi.stubGlobal(
@@ -185,6 +204,18 @@ describe('loadMovies', () => {
     const movies = await loadMovies();
     expect(movies).toHaveLength(3);
     expect(movies[0].title_vi).toBe('Mùa Hè Không Trở Lại');
+  });
+
+  it('resolve poster_url qua BASE_URL khi tải danh mục', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ movies: SAMPLE }),
+      }),
+    );
+    const movies = await loadMovies();
+    expect(movies[0].poster_url).toBe(resolvePosterUrl('/posters/a.webp'));
   });
 
   it('ném lỗi khi HTTP không thành công', async () => {

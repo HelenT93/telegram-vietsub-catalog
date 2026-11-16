@@ -13,6 +13,22 @@ export interface MoviesPayload {
   movies: Movie[];
 }
 
+/**
+ * Poster trong dữ liệu lưu dạng đường dẫn tuyệt đối từ gốc
+ * ("/posters/x.webp"). Khi app chạy dưới sub-path (GitHub Pages:
+ * /telegram-vietsub-catalog/), phải gắn thêm BASE_URL — nếu không trình
+ * duyệt tải từ gốc domain và 404. URL http(s) tuyệt đối giữ nguyên
+ * (dùng khi poster host ở nơi khác).
+ */
+export function resolvePosterUrl(
+  posterUrl: string,
+  base: string = import.meta.env.BASE_URL as string,
+): string {
+  if (/^https?:\/\//i.test(posterUrl)) return posterUrl;
+  const clean = posterUrl.replace(/^\//, '');
+  return `${base}${clean}`;
+}
+
 function isMovie(value: unknown): value is Movie {
   if (typeof value !== 'object' || value === null) return false;
   const m = value as Record<string, unknown>;
@@ -50,7 +66,10 @@ export async function loadMovies(): Promise<Movie[]> {
   if (movies.length === 0 && list.length > 0) {
     throw new Error('Dữ liệu phim không đúng định dạng');
   }
-  return movies;
+  return movies.map((m) => ({
+    ...m,
+    poster_url: resolvePosterUrl(m.poster_url),
+  }));
 }
 
 export function getMovieBySlug(movies: Movie[], slug: string): Movie | undefined {
