@@ -4,6 +4,9 @@
  * của window.Telegram.WebApp trước khi gọi, và có fallback trình duyệt thường.
  */
 
+import { formatPrice } from './format';
+import type { Movie } from './types';
+
 export interface TelegramWebApp {
   ready: () => void;
   expand: () => void;
@@ -67,6 +70,26 @@ export function openExternalLink(url: string): void {
   } else {
     window.open(url, '_blank', 'noopener,noreferrer');
   }
+}
+
+/**
+ * Link mở chat với admin, kèm sẵn tên phim + mã phim + giá trong ô nhập tin
+ * nhắn — người xem chỉ cần bấm gửi, không phải gõ tay. Telegram tự điền sẵn
+ * nội dung qua tham số ?text= (không tự gửi).
+ */
+export function buildAdminContactUrl(
+  username: string,
+  movie: Pick<
+    Movie,
+    'id' | 'title_vi' | 'display_price_vnd' | 'price_note' | 'access_type'
+  >,
+): string {
+  const price =
+    movie.access_type === 'free'
+      ? 'Miễn phí'
+      : `${formatPrice(movie.display_price_vnd)}${movie.price_note ?? ''}`;
+  const text = `Chào admin, mình muốn xem phim "${movie.title_vi}" (Mã phim: ${movie.id}) — Giá tham khảo: ${price}.`;
+  return `https://t.me/${username}?text=${encodeURIComponent(text)}`;
 }
 
 export function hapticLight(): void {
