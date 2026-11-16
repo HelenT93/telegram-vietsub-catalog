@@ -52,10 +52,10 @@ export default function Home() {
           </span>
           <div>
             <h1 className="text-xl font-bold leading-tight text-white">
-              Kho Phim Vietsub
+              Niên Khai Tố Cẩm - Nhất Lộ Sinh Hoa
             </h1>
             <p className="text-xs text-slate-400">
-              Thư viện phim Vietsub trên Telegram
+              Kho Phim Vietsub · Thư viện phim Vietsub trên Telegram
             </p>
           </div>
         </div>
@@ -218,7 +218,8 @@ export default function Home() {
 
       <footer className="mt-10 px-4 text-center text-xs text-slate-500 sm:px-6">
         <p>
-          Kho Phim Vietsub · Cập nhật gần nhất:{' '}
+          Niên Khai Tố Cẩm - Nhất Lộ Sinh Hoa · Kho Phim Vietsub · Cập nhật
+          gần nhất:{' '}
           {movies.length > 0
             ? formatDate(
                 sortMovies(movies, 'updated')[0].updated_at,
