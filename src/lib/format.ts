@@ -39,6 +39,20 @@ export function formatSeasons(seasons: number): string {
   return seasons <= 1 ? 'Mùa 1' : `${seasons} mùa`;
 }
 
+/**
+ * Nhãn mùa hiển thị trên thẻ phim + trang chi tiết. Mục riêng 1 mùa
+ * (vd mục mùa 2 của 1 bộ phim) có season_number -> "Mùa 2"; mục phim
+ * thường không có season_number thì dùng formatSeasons -> "Mùa 1"
+ * hoặc "N mùa".
+ */
+export function seasonLabel(
+  movie: Pick<Movie, 'seasons' | 'season_number'>,
+): string {
+  if (movie.season_number && movie.season_number > 0)
+    return `Mùa ${movie.season_number}`;
+  return formatSeasons(movie.seasons);
+}
+
 /** Trạng thái phim -> nhãn tiếng Việt. Chỉ phim hoàn thành mới là "Hoàn thành";
  * phim chưa xong đều là "Đang cập nhập". */
 export function statusLabel(status: MovieStatus): string {

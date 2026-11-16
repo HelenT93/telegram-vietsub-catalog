@@ -6,6 +6,7 @@ import {
   formatPriceLabel,
   formatSeasons,
   normalizeSearchText,
+  seasonLabel,
   statusLabel,
 } from './format';
 
@@ -79,6 +80,18 @@ describe('formatSeasons', () => {
     expect(formatSeasons(1)).toBe('Mùa 1');
     expect(formatSeasons(2)).toBe('2 mùa');
     expect(formatSeasons(4)).toBe('4 mùa');
+  });
+});
+
+describe('seasonLabel', () => {
+  it('mục riêng 1 mùa (season_number) hiển thị đúng số mùa đó', () => {
+    expect(seasonLabel({ seasons: 1, season_number: 2 })).toBe('Mùa 2');
+    expect(seasonLabel({ seasons: 1, season_number: 3 })).toBe('Mùa 3');
+  });
+
+  it('không có season_number thì dùng seasons như cũ', () => {
+    expect(seasonLabel({ seasons: 1 })).toBe('Mùa 1');
+    expect(seasonLabel({ seasons: 3 })).toBe('3 mùa');
   });
 });
 
