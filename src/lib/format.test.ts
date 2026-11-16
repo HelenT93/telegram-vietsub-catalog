@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  episodeCountLabel,
   formatDate,
   formatEpisodes,
   formatPrice,
@@ -72,6 +73,26 @@ describe('formatEpisodes', () => {
   it('hiển thị dạng "đã phát/tổng tập"', () => {
     expect(formatEpisodes(12, 16)).toBe('12/16 tập');
     expect(formatEpisodes(24, 24)).toBe('24/24 tập');
+  });
+});
+
+describe('episodeCountLabel', () => {
+  it('phim hoàn thành hiện tổng số tập', () => {
+    expect(
+      episodeCountLabel({ status: 'completed', episode_total: 250 }),
+    ).toBe('250 tập');
+    expect(
+      episodeCountLabel({ status: 'completed', episode_total: 124 }),
+    ).toBe('124 tập');
+  });
+
+  it('phim chưa xong chỉ hiện "Đang ra", không hiện số tập', () => {
+    expect(
+      episodeCountLabel({ status: 'ongoing', episode_total: 151 }),
+    ).toBe('Đang ra');
+    expect(
+      episodeCountLabel({ status: 'subtitling', episode_total: 82 }),
+    ).toBe('Đang ra');
   });
 });
 

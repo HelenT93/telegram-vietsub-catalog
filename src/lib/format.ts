@@ -34,6 +34,19 @@ export function formatEpisodes(released: number, total: number): string {
   return `${released}/${total} tập`;
 }
 
+/**
+ * Nhãn số tập hiển thị trên thẻ phim + trang chi tiết. Phim hoàn thành
+ * mới hiện tổng số tập ("250 tập"); phim chưa xong chỉ hiện "Đang ra"
+ * (không hiện "đã dịch/tổng tập" gây lú — vd "0/82 tập" đọc như phim
+ * chỉ có 82 tập mà chưa dịch tập nào).
+ */
+export function episodeCountLabel(
+  movie: Pick<Movie, 'status' | 'episode_total'>,
+): string {
+  if (movie.status === 'completed') return `${movie.episode_total} tập`;
+  return 'Đang ra';
+}
+
 /** 1 -> "Mùa 1"; 2 -> "2 mùa". */
 export function formatSeasons(seasons: number): string {
   return seasons <= 1 ? 'Mùa 1' : `${seasons} mùa`;
