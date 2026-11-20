@@ -38,7 +38,7 @@ export default function Home() {
   const isSearching = query.trim() !== '' || genre !== 'all';
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-3xl pb-10">
+    <div className="mx-auto min-h-screen w-full max-w-3xl pb-32">
       {!isTelegram() && (
         <div className="bg-sky-500/15 px-4 py-2 text-center text-xs text-sky-300">
           Mở trong Telegram để có trải nghiệm đầy đủ
