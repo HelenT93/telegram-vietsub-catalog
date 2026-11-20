@@ -77,7 +77,7 @@ export default function MovieDetail() {
   };
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-3xl pb-10">
+    <div className="mx-auto min-h-screen w-full max-w-3xl pb-32">
       <div className="px-4 pt-4 sm:px-6">
         <Link
           to="/"
