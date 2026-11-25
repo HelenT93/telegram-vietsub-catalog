@@ -732,6 +732,31 @@
    "public_url": null,
    "published_at": "2026-11-22",
    "updated_at": "2026-11-26"
+  },
+  {
+   "access_type": "paid",
+   "display_price_vnd": 25000,
+   "episode_released": 19,
+   "episode_total": 120,
+   "genre": [
+    "Cổ trang",
+    "Tình cảm"
+   ],
+   "id": "thai-pho-nang-khong-ngoan",
+   "is_featured": false,
+   "poster_url": "/posters/poster-thai-pho-nang-khong-ngoan.webp",
+   "price_note": null,
+   "public_url": null,
+   "published_at": "2026-11-26",
+   "slug": "thai-pho-nang-khong-ngoan",
+   "status": "subtitling",
+   "synopsis": "Khương Chiêu, nữ Thái phó giả nam vào triều, gặp lại thanh mai trúc mã Bùi Tịch Liên — người đã bỏ nàng lúc trúng cổ độc — và Thái tử Thẩm Hoài Lẫm, người cứu nàng trong đêm mưa.",
+   "title_original": "《太傅她不乖》",
+   "title_vi": "Thái Phó Nàng Không Ngoan",
+   "updated_at": "2026-11-26",
+   "seasons": 1,
+   "is_adult": true,
+   "leads": "Khương Chiêu × Thẩm Hoài Lẫm"
   }
  ]
 }
