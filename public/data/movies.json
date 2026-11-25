@@ -241,7 +241,7 @@
   },
   {
    "access_type": "paid",
-   "display_price_vnd": 40000,
+   "display_price_vnd": 35000,
    "episode_released": 158,
    "episode_total": 158,
    "genre": [
@@ -259,7 +259,7 @@
    "synopsis": "Chỉ huy sứ Cẩm Y Vệ Lục Tiện lạnh lùng tàn nhẫn với cả thiên hạ, nhưng thiên vị, cưng chiều một mình Chi Ý. Tuyến truyện xoay quanh vụ án cũ nhà họ Lục và quyển tông Đông Cung.",
    "title_original": "《锦衣偏宠》",
    "title_vi": "Cẩm Y Thiên Sủng",
-   "updated_at": "2026-11-17",
+   "updated_at": "2026-11-26",
    "seasons": 4,
    "leads": "Chi Ý × Lục Tiện",
    "is_adult": true
@@ -413,7 +413,7 @@
   },
   {
    "access_type": "paid",
-   "display_price_vnd": 69000,
+   "display_price_vnd": 50000,
    "episode_released": 0,
    "episode_total": 450,
    "genre": [
@@ -428,10 +428,10 @@
    "published_at": "2026-11-16",
    "slug": "phu-quan-ta-la-thai-pho",
    "status": "subtitling",
-   "synopsis": "Tống Liên, con gái nhà quyền quý, gả cho trạng nguyên Dương Dật rồi bị chồng dồn vào đường cùng, phải nương nhờ Thái phó Lục Cửu Uyên — nghĩa phụ của chồng nàng. Tiền truyện kể lần đầu gặp gỡ thời trẻ của hai người ở Xuân Phong Viên.",
+   "synopsis": "Tống Liên, con gái nhà quyền quý, gả cho trạng nguyên Dương Dật rồi bị chồng dồn vào đường cùng, phải nương nhờ Thái phó Lục Cửu Uyên — nghĩa phụ của chồng nàng. Tiền truyện kể lần đầu gặp gỡ thời trẻ của hai người ở Xuân Phong Viên. Kèm hơn 30 ngoại truyện 18+.",
    "title_original": "《夫君是太傅》",
    "title_vi": "Phu Quân Ta Là Thái Phó",
-   "updated_at": "2026-11-17",
+   "updated_at": "2026-11-26",
    "seasons": 1,
    "is_adult": true,
    "leads": "Lục Cửu Uyên × Tống Liên"
@@ -526,14 +526,14 @@
    "seasons": 3,
    "status": "ongoing",
    "access_type": "paid",
-   "display_price_vnd": 20000,
-   "price_note": "/mùa",
+   "display_price_vnd": 35000,
+   "price_note": "/5 mùa",
    "leads": "Thẩm Thanh Qua × Tạ Mẫn",
    "is_adult": false,
    "is_featured": false,
    "public_url": null,
    "published_at": "2026-11-16",
-   "updated_at": "2026-11-17"
+   "updated_at": "2026-11-26"
   },
   {
    "access_type": "paid",
@@ -700,13 +700,13 @@
    "leads": "Trưởng công chúa × Tiêu tướng quân",
    "status": "subtitling",
    "access_type": "paid",
-   "display_price_vnd": 20000,
+   "display_price_vnd": 25000,
    "price_note": null,
    "is_adult": true,
    "is_featured": false,
    "public_url": null,
    "published_at": "2026-11-22",
-   "updated_at": "2026-11-24"
+   "updated_at": "2026-11-26"
   },
   {
    "id": "thuyen-co-vuot-mua",
@@ -726,12 +726,12 @@
    "leads": "Thẩm Tễ × Cố Tinh Chu",
    "status": "ongoing",
    "access_type": "paid",
-   "display_price_vnd": 20000,
+   "display_price_vnd": 15000,
    "price_note": null,
    "is_featured": false,
    "public_url": null,
    "published_at": "2026-11-22",
-   "updated_at": "2026-11-22"
+   "updated_at": "2026-11-26"
   }
  ]
 }
