@@ -831,6 +831,30 @@
    "seasons": 1,
    "leads": "Tống Chiêu × Gia Thố",
    "is_adult": false
+  },
+  {
+   "access_type": "paid",
+   "display_price_vnd": 20000,
+   "episode_released": 0,
+   "episode_total": 45,
+   "genre": [
+    "Hiện đại",
+    "Tình cảm"
+   ],
+   "id": "ep-say-tang-tuu",
+   "is_featured": false,
+   "poster_url": "/posters/poster-ep-say-tang-tuu.webp",
+   "price_note": null,
+   "public_url": null,
+   "published_at": "2026-11-27",
+   "slug": "ep-say-tang-tuu",
+   "status": "ongoing",
+   "synopsis": "Chuyện tình hiện đại, quân nhân, cưỡng chế — 45 tập.",
+   "title_original": "《桑酒强制》",
+   "title_vi": "Ép Say Tang Tửu",
+   "updated_at": "2026-11-27",
+   "seasons": 1,
+   "is_adult": true
   }
  ]
 }
