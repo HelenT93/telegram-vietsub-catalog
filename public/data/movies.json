@@ -727,7 +727,7 @@
    "leads": "Thẩm Tễ × Cố Tinh Chu",
    "status": "ongoing",
    "access_type": "paid",
-   "display_price_vnd": 15000,
+   "display_price_vnd": 20000,
    "price_note": null,
    "is_featured": false,
    "public_url": null,
@@ -834,7 +834,7 @@
   },
   {
    "access_type": "paid",
-   "display_price_vnd": 20000,
+   "display_price_vnd": 25000,
    "episode_released": 0,
    "episode_total": 45,
    "genre": [
