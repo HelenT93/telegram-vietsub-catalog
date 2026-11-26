@@ -715,7 +715,7 @@
    "title_vi": "Thuyền Cô Vượt Mưa",
    "title_original": "《孤舟渡霁》",
    "synopsis": "Thẩm Tễ, tiểu thư họ Thẩm, gặp Cố Tinh Chu — chàng bỏ mười vạn lượng mua một khối sắt vụn trong lần gặp đầu tiên. Giữa định kiến thiên hạ và những lần thăm dò, đối đầu nhau, hai người cùng nắm giữ tín vật đính ước, bước qua mưa gió về phía nhau.",
-   "poster_url": "/posters/poster-thuyen-co-vuot-mua.webp",
+   "poster_url": "/posters/poster-thuyen-co-vuot-mua-v2.webp",
    "genre": [
     "Cổ trang",
     "Quyền mưu",
@@ -732,7 +732,7 @@
    "is_featured": false,
    "public_url": null,
    "published_at": "2026-11-22",
-   "updated_at": "2026-11-26"
+   "updated_at": "2026-11-27"
   },
   {
    "access_type": "paid",
@@ -758,6 +758,79 @@
    "seasons": 1,
    "is_adult": true,
    "leads": "Khương Chiêu × Thẩm Hoài Lẫm"
+  },
+  {
+   "access_type": "paid",
+   "display_price_vnd": 25000,
+   "episode_released": 0,
+   "episode_total": 23,
+   "genre": [
+    "Cổ trang",
+    "Tình cảm"
+   ],
+   "id": "o-y-diep-xuan",
+   "is_featured": false,
+   "poster_url": "/posters/poster-o-y-diep-xuan.webp",
+   "price_note": null,
+   "public_url": null,
+   "published_at": "2026-11-27",
+   "slug": "o-y-diep-xuan",
+   "status": "ongoing",
+   "synopsis": "Chị dâu góa phụ của huynh trưởng và em chồng Yến Trường Cảnh — mối duyên 'tẩu tẩu' ngang trái.",
+   "title_original": "《与弟敌谋春》",
+   "title_vi": "Ô Y Điệp Xuân",
+   "updated_at": "2026-11-27",
+   "seasons": 1,
+   "is_adult": true
+  },
+  {
+   "access_type": "paid",
+   "display_price_vnd": 20000,
+   "episode_released": 0,
+   "episode_total": 188,
+   "genre": [
+    "Cổ trang",
+    "Hài"
+   ],
+   "id": "bao-quan-hoa-thu-tinh-duyen",
+   "is_featured": false,
+   "poster_url": "/posters/poster-bao-quan-hoa-thu-tinh-duyen.webp",
+   "price_note": null,
+   "public_url": null,
+   "published_at": "2026-11-27",
+   "slug": "bao-quan-hoa-thu-tinh-duyen",
+   "status": "subtitling",
+   "synopsis": "Bạo quân bị hệ thống hố hết lần này tới lần khác, nên duyên cùng Hoa Thủ.",
+   "title_original": "《暴君他又被系统坑了之花手情缘》",
+   "title_vi": "Bạo Quân Lại Bị Hệ Thống Hố: Hoa Thủ Tình Duyên",
+   "updated_at": "2026-11-27",
+   "seasons": 1,
+   "is_adult": true
+  },
+  {
+   "access_type": "free",
+   "display_price_vnd": null,
+   "episode_released": 0,
+   "episode_total": 120,
+   "genre": [
+    "Hiện đại",
+    "Tình cảm"
+   ],
+   "id": "cao-nguyen-trien-tinh",
+   "is_featured": false,
+   "poster_url": "/posters/poster-cao-nguyen-trien-tinh.webp",
+   "price_note": null,
+   "public_url": null,
+   "published_at": "2026-11-27",
+   "slug": "cao-nguyen-trien-tinh",
+   "status": "subtitling",
+   "synopsis": "Tống Chiêu gặp Gia Thố, chủ homestay người Tạng ở Khang Định — chuyện tình hiện đại ngọt ngào, không ngược.",
+   "title_original": "《高原缠情》",
+   "title_vi": "Cao Nguyên Triền Tình",
+   "updated_at": "2026-11-27",
+   "seasons": 1,
+   "leads": "Tống Chiêu × Gia Thố",
+   "is_adult": false
   }
  ]
 }
