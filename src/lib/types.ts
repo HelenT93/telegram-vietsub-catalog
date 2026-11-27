@@ -26,6 +26,8 @@ export interface Movie {
   /** Phim có cảnh nóng — hiển thị ký hiệu [18+] trước tên phim.
    * Nguồn: dấu ⚡ trên poster tổng hợp đã duyệt (có cảnh uncut). */
   is_adult?: boolean;
+  /** Nhãn tuổi hiển thị thay cho mặc định "18+", vd "21+". Chỉ dùng khi is_adult = true. */
+  age_rating?: string;
   /** Hậu tố giá, vd "/mùa" khi giá tính theo mùa. Chỉ dùng khi access_type = 'paid'. */
   price_note?: string | null;
   is_featured: boolean;

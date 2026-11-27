@@ -407,10 +407,11 @@
    "synopsis": "Ba năm trước, họ chia tay vì một hiểu lầm. Ba năm sau, cô trở về Bắc Kinh để đòi lại quyền thừa kế — và một cú ngã đã xóa sạch ký ức của cô ở Luân Đôn. Người đàn ông từng là tất cả của cô đứng trước mặt, cô lại không nhớ anh là ai.",
    "title_original": "《偏爱失控》",
    "title_vi": "Thiên Vị Mất Kiểm Soát",
-   "updated_at": "2026-11-17",
+   "updated_at": "2026-11-27",
    "seasons": 2,
    "leads": "Thịnh Tiệp Dư × Tạ Chấp Xuyên",
-   "is_adult": true
+   "is_adult": true,
+   "age_rating": "21+"
   },
   {
    "access_type": "paid",
@@ -481,10 +482,11 @@
    "display_price_vnd": 20000,
    "price_note": null,
    "is_adult": true,
+   "age_rating": "21+",
    "is_featured": false,
    "public_url": null,
    "published_at": "2026-11-16",
-   "updated_at": "2026-11-16"
+   "updated_at": "2026-11-27"
   },
   {
    "id": "hy-lam-dong-cung",

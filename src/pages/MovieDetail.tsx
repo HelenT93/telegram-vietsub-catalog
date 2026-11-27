@@ -142,7 +142,7 @@ export default function MovieDetail() {
               <h1 className="text-2xl font-bold leading-tight text-white">
                 {movie.is_adult && (
                   <span className="mr-2 rounded-md bg-rose-600 px-1.5 py-0.5 align-middle text-sm font-bold text-white">
-                    18+
+                    {movie.age_rating ?? '18+'}
                   </span>
                 )}
                 {movie.title_vi}
